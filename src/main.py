@@ -115,6 +115,31 @@ def ask_repeat():
 
 
 def main():
-    pass
+    """
+    Управляет основным циклом работы программы: ввод данных, расчет, вывод и повтор
+    Параметры: отсутствуют
+    Возвращает: ничего
+    """
+    is_running = True
+
+    while is_running:
+        student_name = ""
+        days = 0
+        daily_hours = 0.0
+        total_hours = 0.0
+        goal_share = 0.0
+
+        student_name = read_student_name()
+        days = read_days()
+        daily_hours = read_daily_hours()
+
+        total_hours = days * daily_hours
+        goal_share = total_hours / TARGET_HOURS
+        status = get_goal_status(total_hours, TARGET_HOURS)
+
+        print_plan_report(student_name=student_name, days=days, daily_hours=daily_hours, total_hours=total_hours, goal_share=goal_share, status=status, target_hours=TARGET_HOURS)
+        is_running = ask_repeat()
+
+    print("Работа программы завершена")
 
 main()
